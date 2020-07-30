@@ -1,0 +1,48 @@
+{
+  "name": "origin",
+  "private": true,
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "bin": "dist/server.js",
+  "scripts": {
+    "dev": "npm run start:typescript",
+    "build": "run-s build:*",
+    "build:clean": "rimraf dist/ exec/ cdk.out/",
+    "build:node": "tsc",
+    "build:docker": "DOCKER_BUILDKIT=1 docker build . -t origin",
+    "build:native": "pkg . --out-path exec/",
+    "build:success": "echo \"Successful build (node + docker + native)\"",
+    "start": "npm run start:node",
+    "start:typescript": "ts-node src/server.ts",
+    "start:node": "node dist/server.js",
+    "start:docker": "docker run --rm -it -p 80:80 origin",
+    "start:native:win": "./exec/origin-win.exe",
+    "start:native:macos": "./exec/origin-macos",
+    "start:native:linux": "./exec/origin-linux",
+    "deploy": "npm run deploy:cdk",
+    "deploy:cdk": "cdk deploy",
+    "destroy": "npm run destroy:cdk",
+    "destroy:cdk": "cdk destroy"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@aws-cdk/aws-certificatemanager": "=1.45.0",
+    "@aws-cdk/aws-ec2": "=1.45.0",
+    "@aws-cdk/aws-ecs": "=1.45.0",
+    "@aws-cdk/aws-ecs-patterns": "=1.45.0",
+    "@aws-cdk/aws-elasticloadbalancingv2": "=1.45.0",
+    "@aws-cdk/aws-route53": "=1.45.0",
+    "@aws-cdk/core": "=1.45.0",
+    "@types/express": "^4.17.6",
+    "@types/source-map-support": "^0.5.2",
+    "aws-cdk": "^1.56.0",
+    "npm-run-all": "^4.1.5",
+    "pkg": "^4.4.9",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
