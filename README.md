@@ -82,7 +82,7 @@ ORIGIN_AWS_HOSTED_ZONE_ID="<Route53 HostedZoneId>"
 ORIGIN_AWS_CERTIFICATE_ARN="arn:aws:acm:us-east-1:<ACCOUNT>:certificate/<ID>"
 
 # the optional environment variables (with examples):
-ORIGIN_AWS_INSTANCES="3"  # defaults to 2
+ORIGIN_AWS_INSTANCES="1"  # defaults to 3
 ```
 
 > Make sure you're logged in to AWS.

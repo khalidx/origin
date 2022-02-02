@@ -19,13 +19,11 @@ export class CdkStack extends cdk.Stack {
       stackName: props?.stackName || env.required('ORIGIN_AWS_STACK_NAME')
     })
 
-    const vpc = new ec2.Vpc(this, 'InfrastructureVpc', { maxAzs: 3 })
-
-    const cluster = new ecs.Cluster(this, 'InfrastructureCluster', { vpc })
-
-    const service = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'ServerService', {
-      cluster,
-      desiredCount: env.integer('ORIGIN_AWS_INSTANCES', 2),
+    new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'InfrastructureService', {
+      cluster: new ecs.Cluster(this, 'InfrastructureCluster', {
+        vpc: new ec2.Vpc(this, 'InfrastructureVpc', { maxAzs: 3 })
+      }),
+      desiredCount: env.integer('ORIGIN_AWS_INSTANCES', 3),
       cpu: 256,
       memoryLimitMiB: 1024,
       taskImageOptions: {
