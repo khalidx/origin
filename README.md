@@ -23,7 +23,7 @@ Launch the application in dev mode.
 npm run dev
 ```
 
-The default boilerplate starts a node express API on port 80.
+The default boilerplate starts a node express API on port 3000.
 
 Build the application for (node + docker + native) platforms.
 
@@ -54,7 +54,7 @@ npm run start:native:linux
 
 # you can also run with docker directly
 
-docker run --rm -it -p 80:80 origin
+docker run --rm -it -p 3000:3000 origin
 
 # or run it with the native binary for your OS
 

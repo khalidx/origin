@@ -13,6 +13,6 @@ RUN rm -rf node_modules/
 RUN npm ci --only=production
 RUN chmod +x dist/server.js
 
-EXPOSE 80
+EXPOSE 3000
 
 ENTRYPOINT ["dist/server.js"]

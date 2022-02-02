@@ -15,7 +15,7 @@
     "start": "npm run start:node",
     "start:typescript": "ts-node src/server.ts",
     "start:node": "node dist/server.js",
-    "start:docker": "docker run --rm -it -p 80:80 origin",
+    "start:docker": "docker run --rm -it -p 3000:3000 origin",
     "start:native:win": "./exec/origin-win.exe",
     "start:native:macos": "./exec/origin-macos",
     "start:native:linux": "./exec/origin-linux",
