@@ -15,3 +15,5 @@ export const env = {
     return parsed
   }
 }
+
+export default env

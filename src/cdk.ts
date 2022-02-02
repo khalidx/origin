@@ -10,7 +10,7 @@ import * as route53 from '@aws-cdk/aws-route53'
 
 import { join } from 'path'
 
-import { env } from './env'
+import env from './env'
 
 export class CdkStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
