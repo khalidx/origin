@@ -73,16 +73,30 @@ You can also deploy instantly. Try this command:
 
 ```bash
 npm run deploy
+```
 
-# the required environment variables (with examples):
-ORIGIN_AWS_STACK_NAME="my-app"
-ORIGIN_AWS_SUBDOMAIN="my-app.example.com"
-ORIGIN_AWS_HOSTED_ZONE_NAME="example.com"
-ORIGIN_AWS_HOSTED_ZONE_ID="<Route53 HostedZoneId>"
-ORIGIN_AWS_CERTIFICATE_ARN="arn:aws:acm:us-east-1:<ACCOUNT>:certificate/<ID>"
+The following environment variables are **required**:
 
-# the optional environment variables (with examples):
-ORIGIN_AWS_INSTANCES="1"  # defaults to 3
+- `ORIGIN_AWS_STACK_NAME`
+- `ORIGIN_AWS_SUBDOMAIN`
+- `ORIGIN_AWS_HOSTED_ZONE_NAME`
+- `ORIGIN_AWS_HOSTED_ZONE_ID`
+- `ORIGIN_AWS_CERTIFICATE_ARN`
+
+The following environment variables are *optional*:
+
+- `ORIGIN_AWS_INSTANCES` (min: `1` | default: `3`)
+
+Here's how you would use the `npm run deploy` command, with example values for the environment variables:
+
+```bash
+ORIGIN_AWS_STACK_NAME="my-app" \
+ORIGIN_AWS_SUBDOMAIN="my-app.example.com" \
+ORIGIN_AWS_HOSTED_ZONE_NAME="example.com" \
+ORIGIN_AWS_HOSTED_ZONE_ID="<Route53 HostedZoneId>" \
+ORIGIN_AWS_CERTIFICATE_ARN="arn:aws:acm:us-east-1:<ACCOUNT>:certificate/<ID>" \
+ORIGIN_AWS_INSTANCES="1" \
+npm run deploy
 ```
 
 > Make sure you're logged in to AWS.
