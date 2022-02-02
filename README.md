@@ -69,10 +69,14 @@ You can also deploy instantly. Try this command:
 npm run deploy
 
 # the required environment variables (with examples):
+ORIGIN_AWS_STACK_NAME="my-app"
 ORIGIN_AWS_SUBDOMAIN="my-app.example.com"
 ORIGIN_AWS_HOSTED_ZONE_NAME="example.com"
 ORIGIN_AWS_HOSTED_ZONE_ID="<Route53 HostedZoneId>"
 ORIGIN_AWS_CERTIFICATE_ARN="arn:aws:acm:us-east-1:<ACCOUNT>:certificate/<ID>"
+
+# the optional environment variables (with examples):
+ORIGIN_AWS_INSTANCES="3"  # defaults to 2
 ```
 
 > Make sure you're logged in to AWS.
