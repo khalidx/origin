@@ -15,6 +15,12 @@ Use the entire TypeScript, Node, NPM, and AWS CDK ecosystem while building your 
 
 ## Quickstart
 
+Use the GitHub ["Use this template"](https://github.com/khalidx/origin/generate) button or copy just the files you need from this repo with this one-liner:
+
+```bash
+wget https://github.com/khalidx/origin/archive/master.zip && unzip -d origin/ master.zip && rm master.zip
+```
+
 Launch the application in dev mode.
 
 ```bash
