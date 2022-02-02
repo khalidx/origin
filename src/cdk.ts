@@ -5,7 +5,6 @@ import * as cdk from '@aws-cdk/core'
 import * as ec2 from '@aws-cdk/aws-ec2'
 import * as ecs from '@aws-cdk/aws-ecs'
 import * as ecs_patterns from '@aws-cdk/aws-ecs-patterns'
-import * as elbv2 from '@aws-cdk/aws-elasticloadbalancingv2'
 import * as acm from '@aws-cdk/aws-certificatemanager'
 import * as route53 from '@aws-cdk/aws-route53'
 
@@ -33,6 +32,7 @@ export class CdkStack extends cdk.Stack {
         image: ecs.ContainerImage.fromAsset(join(__dirname, '../'), { exclude: [ 'node_modules', 'dist', 'exec', 'cdk.out' ] })
       },
       publicLoadBalancer: true,
+      redirectHTTP: true,
       domainName: env.required('ORIGIN_AWS_SUBDOMAIN'),
       domainZone: route53.HostedZone.fromHostedZoneAttributes(this, 'InfrastructureZone', {
         zoneName: env.required('ORIGIN_AWS_HOSTED_ZONE_NAME'),
@@ -41,10 +41,6 @@ export class CdkStack extends cdk.Stack {
       certificate: acm.Certificate.fromCertificateArn(this, 'InfrastructureCertificate', env.required('ORIGIN_AWS_CERTIFICATE_ARN'))
     })
 
-    service
-    .loadBalancer
-    .addListener('HttpListener', { protocol: elbv2.ApplicationProtocol.HTTP, port: 80 })
-    .addRedirectResponse('HttpRedirect', { statusCode: 'HTTP_301', protocol: elbv2.ApplicationProtocol.HTTPS, port: '443' })
   }
 }
 
